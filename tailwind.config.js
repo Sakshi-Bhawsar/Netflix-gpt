@@ -4,7 +4,14 @@ module.exports = {
      "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      scrollbar: {
+        'none': 'none',
+      },
+    },
+  },
+  variants: {
+    scrollbar: ['none'],
   },
   plugins: [],
 }
