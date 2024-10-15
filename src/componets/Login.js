@@ -5,9 +5,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { updateProfile } from "firebase/auth";
 import { addUser } from "../utils/userSlice";
-
 import { auth } from "../utils/firebase"
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
@@ -17,7 +15,8 @@ const Login = () => {
     const password = useRef(null)
     const name = useRef(null)
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+
+
     const toggleSignInForm = () => {
         setIsSignInForm(!isSignInForm)
     }
@@ -37,16 +36,15 @@ const Login = () => {
                     const user = userCredential.user;
                     updateProfile(user, {
                         displayName: name.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
-                      }).then(() => {
+                    }).then(() => {
                         // Profile updated!
-                        const {uid,email ,displayName,photoURL} = auth.currentUser;
-                        dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}))
-                        navigate("/browse")
-                      }).catch((error) => {
+                        const { uid, email, displayName, photoURL } = auth.currentUser;
+                        dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }))
+                    }).catch((error) => {
                         // An error occurred
                         // ...
                         setErrorMsg(error.message)
-                      });
+                    });
                     console.log(user)
 
                 })
@@ -60,13 +58,12 @@ const Login = () => {
         }
         else {
 
-            
+
             signInWithEmailAndPassword(auth, email.current.value, password.current.value)
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
                     console.log(user)
-                    navigate("/browse")
 
 
                 })
@@ -89,9 +86,9 @@ const Login = () => {
             <form onSubmit={(e) => e.preventDefault()} className="   absolute  p-10 text-white  bg-black  bg-opacity-80 w-4/12  my-36 mx-auto right-0 left-0  ">
                 <h1 className=" font-bold text-3xl py-2 "> {isSignInForm ? "Sign In" : "Sign up"}</h1>
                 {
-                    !isSignInForm && <input   
-                     ref={name}
- type="text" placeholder="Full Name" className=" p-4 my-4 w-full bg-gray-700 border-gray-400 border-2"></input>
+                    !isSignInForm && <input
+                        ref={name}
+                        type="text" placeholder="Full Name" className=" p-4 my-4 w-full bg-gray-700 border-gray-400 border-2"></input>
 
                 }
                 <input
