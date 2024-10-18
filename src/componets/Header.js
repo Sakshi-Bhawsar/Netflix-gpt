@@ -62,14 +62,14 @@ const handleLanguageChange =(e)=>{
             user &&  
              <div className=" flex items-center gap-2">
              {
-              showGptSearch &&   <select className=" p-2 bg-gray-500 text-white m-2" onChange={handleLanguageChange}>
+              showGptSearch &&   <select className=" px-4 py-2  focus:outline-none cursor-pointer hover:opacity-80  bg-white opacity-70 rounded  text-black m-2" onChange={handleLanguageChange}>
              {
               SUPPORTED_LANGUAGE.map(lang=><option key={lang.identifier} value={lang.identifier}>{lang.name}</option>)
              }
              </select>
              }
            
-             <button className=" py-2 px-4 mx-4 bg-purple-800 my-2 rounded "
+             <button className=" py-2 px-6 mx-4  bg-white text-black opacity-75 my-2 rounded hover:opacity-85 "
              onClick={handleGptsearchClick}
              > {showGptSearch ?"Home" :"GPT search"} </button>
 

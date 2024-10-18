@@ -2,9 +2,12 @@ import { useEffect } from "react";
 import { addTrandingMovies} from "../utils/moviesSlice";
 import { useDispatch } from "react-redux";
 import {API_OPTIONS} from "../utils/constant"
+import { useSelector } from "react-redux";
 
 const useTrandingMovies=()=>{
     const dispatch = useDispatch();
+   
+    const trandingMovies = useSelector(store=>store.movies.trandingMovies)
 
     const getTrandingMovies = async()=>{
         const data = await fetch('https://api.themoviedb.org/3/movie/top_rated', API_OPTIONS)
@@ -14,7 +17,7 @@ const useTrandingMovies=()=>{
     }
 
     useEffect(()=>{
-        getTrandingMovies()
+      !trandingMovies &&  getTrandingMovies()
     },[])
 }
 
