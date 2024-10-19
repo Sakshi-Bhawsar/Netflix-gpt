@@ -56,11 +56,11 @@ const handleLanguageChange =(e)=>{
    dispatch(changeLanguage(e.target.value))
 }
     return(
-        <div className=" absolute flex justify-between w-screen z-10 px-8 py-2 bg-gradient-to-b from-black ">
-          <img className=" w-44 " src={logo} alt="logo" ></img>
+        <div className=" absolute flex flex-col md:flex-row  justify-between w-screen z-10 px-8 py-2 bg-gradient-to-b from-black   ">
+          <img className=" w-44 mx-auto md:mx-0 " src={logo} alt="logo" ></img>
           {
             user &&  
-             <div className=" flex items-center gap-2">
+             <div className=" flex items-center justify-between gap-2">
              {
               showGptSearch &&   <select className=" px-4 py-2  focus:outline-none cursor-pointer hover:opacity-80  bg-white opacity-70 rounded  text-black m-2" onChange={handleLanguageChange}>
              {
@@ -73,7 +73,7 @@ const handleLanguageChange =(e)=>{
              onClick={handleGptsearchClick}
              > {showGptSearch ?"Home" :"GPT search"} </button>
 
-          <img   className=" w-10 h-10" src="https://occ-0-4875-2164.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABXz4LMjJFidX8MxhZ6qro8PBTjmHbxlaLAbk45W1DXbKsAIOwyHQPiMAuUnF1G24CLi7InJHK4Ge4jkXul1xIW49Dr5S7fc.png?r=e6e" alt=""/>
+          <img   className=" hidden md:block w-10 h-10" src="https://occ-0-4875-2164.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABXz4LMjJFidX8MxhZ6qro8PBTjmHbxlaLAbk45W1DXbKsAIOwyHQPiMAuUnF1G24CLi7InJHK4Ge4jkXul1xIW49Dr5S7fc.png?r=e6e" alt=""/>
           <button className=" font-bold text-white" onClick={handleSignOut}>Sign Out</button>
           </div>
           }
